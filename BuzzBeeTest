@@ -1,0 +1,46 @@
+import org.junit.jupiter.api.*;
+
+class BuzzBeeTest {
+
+    public BuzzBee bB;
+
+    @BeforeEach
+    public void setUp() {
+        bB = new BuzzBee();
+    }
+
+    @DisplayName("Play FizzBuzz with number = 1")
+    @Test
+    public void testNumber() {
+        String buzzBee = bB.play(1);
+        Assertions.assertEquals(buzzBee, "1");
+    }
+
+    @DisplayName("Play BuzzBee with number = 3")
+    @Test
+    public void testBee() {
+        String buzzBee = bB.play(3);
+        Assertions.assertEquals(buzzBee, "Bee");
+    }
+
+    @DisplayName("Play BuzzBee with number = 5")
+    @Test
+    public void testBuzz() {
+        String buzzBee = bB.play(5);
+        Assertions.assertEquals(buzzBee, "Buzz");
+    }
+
+    @DisplayName("Don't Play FizzBuzz with number = 0")
+    @Test
+    public void testZero() {
+
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> bB.play(0));
+    }
+
+    @AfterEach
+    public void tearDown() {
+        bB = null;
+    }
+
+}
